@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "name": "Jack London",
+        "email": "jack.london@gmail.com",
+        "phone": "+36203452114"
+    },    {
+        "id": 2,
+        "name": "Jimmy Fallon",
+        "email": "jack.london@gmail.com",
+        "phone": "+36203452114"
+    },    {
+        "id": 3,
+        "name": "Kiss Ádám",
+        "email": "jack.london@gmail.com",
+        "phone": "+36203452114"
+    },    {
+        "id": 4,
+        "name": "Nagy Béla",
+        "email": "jack.london@gmail.com",
+        "phone": "+36203452114"
+    }
+]
