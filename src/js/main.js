@@ -1,8 +1,7 @@
 jQuery.getJSON('users', function (users) {
     console.log('users', users);
-    console.log('alma')
 });
 
-function checkUser () {
-
+function checkUser() {
+    console.log('alma');
 };
