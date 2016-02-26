@@ -2,6 +2,10 @@ jQuery.getJSON('users', function (users) {
     console.log('users', users);
 });
 
-function checkUser() {
-    console.log('alma aa');
+function checkUser(user) {
+    if (user.role > 4) {
+        return true;
+    } else {
+        return false;
+    }
 };
