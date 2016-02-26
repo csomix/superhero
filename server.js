@@ -1,14 +1,20 @@
 var express = require('express');
+var itf = require('./my_modules/itf_module');
 var fs = require('fs');
 var port = 3000;
 var staticDir = 'build';
-
 
 var app = express();
 
 app.use(express.static(staticDir));
 
-app.get('/', function (req, res) {
+// Express use használata
+app.use(function (req, res, next) {
+    console.log('request url: ', req.url);
+    next();
+});
+
+app.get('/', function (req, res, next) {
     fs.readFile('./' + staticDir + '/index.html', 'utf8', function (err, data) {
         res.send(data);
     });
@@ -37,13 +43,10 @@ function handleUsers(req, res) {
     });
 }
 
-app.get('/users/:id*?', function (req, res) {
+app.get('/users/:id*?', function (req, res, next) {
     console.log(req.url);
     handleUsers(req, res);
-
 });
 
-
 app.listen(port);
-
 console.log("Server running in localhost:" + port);

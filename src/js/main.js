@@ -8,4 +8,4 @@ function checkUser(user) {
     } else {
         return false;
     }
-};
+}
