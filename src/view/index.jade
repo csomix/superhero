@@ -1,3 +1,5 @@
+- var classes = ['main', 'large', 'no-padding']
+
 doctype html
 html(lang='')
   head
@@ -41,8 +43,12 @@ html(lang='')
         // .nav-collapse
     .container
       .starter-template
-        h1= message
-        h2= title
+        h1(
+            class='my-h1'
+            id='h1-01'
+            data-ng-model='myModel'
+        )= title
+        h2(class=classes)= message
         p.lead
           | Now you can start your own project with
           a(target='_blank', href='http://getbootstrap.com/') Bootstrap 3.3.6
