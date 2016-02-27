@@ -3,14 +3,22 @@ var itf = require('./my_modules/itf_module');
 var fs = require('fs');
 var port = 3000;
 var staticDir = 'build';
-
 var app = express();
+
+var str = 1;
+itf.tu(str, function (err, newStr) {
+    if (err) {
+        console.error(err);
+    } else {
+        console.log('New string is ', newStr);
+    }
+});
 
 app.use(express.static(staticDir));
 
 // Express use használata
 app.use(function (req, res, next) {
-    console.log('request url: ', req.url);
+    console.log('request url: ', req);
     next();
 });
 
