@@ -1,10 +1,15 @@
 var express = require('express');
-var itf = require('./my_modules/itf_module');
+// var itf = require('./my_modules/itf_module');
 var fs = require('fs');
 var port = 3000;
 var staticDir = 'build';
-var app = express();
 
+
+var app = express();
+app.set('view engine', 'jade');
+app.set('views', './src/view');
+
+/*
 var str = 1;
 itf.tu(str, function (err, newStr) {
     if (err) {
@@ -13,19 +18,32 @@ itf.tu(str, function (err, newStr) {
         console.log('New string is ', newStr);
     }
 });
+*/
 
 app.use(express.static(staticDir));
 
 // Express use használata
 app.use(function (req, res, next) {
-    console.log('request url: ', req);
-    next();
+    if (req.headers['x-requested-with'] == 'XMLHttpRequest') {
+        console.log('Ajax kérés folyamatban!');
+        res.send(JSON.stringify({
+            'hello': 'world'
+        }));
+    } else {
+        next();
+    }
+    // console.log(req.headers);
 });
 
 app.get('/', function (req, res, next) {
-    fs.readFile('./' + staticDir + '/index.html', 'utf8', function (err, data) {
-        res.send(data);
+    res.render('index', {
+        title: 'Hey',
+        message: 'Hello there!'
     });
+    /*    fs.readFile('./' + staticDir + '/index.html', 'utf8', function (err, data) {
+            res.send(data);
+        });
+    */
 });
 
 function handleUsers(req, res) {

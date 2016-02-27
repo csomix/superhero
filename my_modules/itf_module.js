@@ -1,5 +1,6 @@
 // Szövegek nagybetűssé alakítása.
 // @param: str, String
+/*
 function toUpper(str, callbackFn) {
     if (!callbackFn) {
         console.error('Not given callbackFn!');
@@ -17,3 +18,4 @@ function toUpper(str, callbackFn) {
 module.exports = {
     tu: toUpper
 };
+*/
