@@ -37,8 +37,8 @@ app.use(function (req, res, next) {
 
 app.get('/', function (req, res, next) {
     res.render('index', {
-        title: 'Hey',
-        message: 'Hello there!'
+        title: 'IT Factory Web SuperHero',
+        message: 'Yes, It is!'
     });
     /*    fs.readFile('./' + staticDir + '/index.html', 'utf8', function (err, data) {
             res.send(data);
