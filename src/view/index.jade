@@ -15,4 +15,11 @@ block content
         | . This plugin is a fork from
         a(href='https://github.com/le717/brackets-html-skeleton#readme') HTML Skeleton
         | .
+      ul
+        each user in users
+          li #{user.id}: #{user.name} - #{user.email}
+
+
+
+
 
