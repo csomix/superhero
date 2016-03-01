@@ -6,6 +6,7 @@ mongoose.connect('mongodb://localhost/superhero');
 
 var Users = require('./models/users');
 Users.setConnection(mongoose);
+/*
 Users.create({
   name: 'John Doe',
   email: 'john.doe@gmail.com',
@@ -18,6 +19,10 @@ Users.create({
   }
 }, function (saved) {
   console.info("Saved model: ", saved);
+});
+*/
+Users.read({}, function (users) {
+  console.info("Users:", users);
 });
 
 var fs = require('fs');

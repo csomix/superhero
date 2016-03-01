@@ -22,12 +22,18 @@ function setModel() {
 }
 
 function read(where, callBack) {
+  if (!where)
+    where = {};
   Users.find(where, function (err, data) {
     if (err) {
       console.error('Error in query: ', where);
-      callBack({});
+      if (callBack) {
+        callBack({});
+      }
     } else {
-      callBack(data);
+      if (callBack) {
+        callBack(data);
+      }
     }
   });
 }
