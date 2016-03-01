@@ -29,13 +29,26 @@ Users.read({
 });
 */
 
+Users.getModel().update({
+    name: new RegExp('doe', 'gi')
+  }, {
+    name: 'Jason borne'
+  },
+  function (err, user) {
+    if (err) {
+      console.error(err);
+    }
+  }
+);
+
+
 Users.first({
   /*  'role': {
       $gte: 3,
       $lte: 5
     }
   */
-  name: new RegExp('jack', 'gi')
+  name: new RegExp('son', 'gi')
 
 }, function (user) {
   if (user !== null) {
@@ -45,6 +58,10 @@ Users.first({
   }
 });
 
+Users.getModel().isAdmin(2, function (err, data) {
+  console.log(err);
+  console.log(data);
+});
 
 var fs = require('fs');
 var port = 3000;
