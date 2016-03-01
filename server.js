@@ -2,14 +2,22 @@ var express = require('express');
 //var itf = require('./my_modules/itf_module');
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect('mongodb://localhost/superhero');
 
-var itf = require('./models/itf');
-itf.setConnection(mongoose);
-itf.read({
-  'name': 'Joe'
-}, function (data) {
-  console.log(data);
+var Users = require('./models/users');
+Users.setConnection(mongoose);
+Users.create({
+  name: 'John Doe',
+  email: 'john.doe@gmail.com',
+  phone: '+36301234567',
+  address: '1122 Budapest, Kiss u. 10',
+  role: 3,
+  meta: {
+    birthsday: new Date('1994-07-04'),
+    hobby: 'golf'
+  }
+}, function (saved) {
+  console.info("Saved model: ", saved);
 });
 
 var fs = require('fs');
