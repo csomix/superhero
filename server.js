@@ -30,9 +30,19 @@ Users.read({
 */
 
 Users.first({
-  'role': 3
+  /*  'role': {
+      $gte: 3,
+      $lte: 5
+    }
+  */
+  name: new RegExp('jack', 'gi')
+
 }, function (user) {
-  console.info("User name:", user.name);
+  if (user !== null) {
+    console.info("User name:", user.name);
+  } else {
+    console.info("User name: no-user");
+  }
 });
 
 
