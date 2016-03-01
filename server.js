@@ -29,10 +29,22 @@ Users.read({
 });
 */
 
+Users.getModel().remove({
+    name: new RegExp('Jack', 'i')
+  },
+  function (err, rem) {
+    if (err) {
+      console.error(err);
+    } else {
+      console.log(rem.result);
+    }
+  }
+);
+
 Users.getModel().update({
-    name: new RegExp('doe', 'gi')
+    name: new RegExp('jason', 'gi')
   }, {
-    name: 'Jason borne'
+    girlFriend: 'Mariann'
   },
   function (err, user) {
     if (err) {
