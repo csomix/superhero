@@ -21,9 +21,20 @@ Users.create({
   console.info("Saved model: ", saved);
 });
 */
-Users.read({}, function (users) {
+/*
+Users.read({
+  'role': 1
+}, function (users) {
   console.info("Users:", users);
 });
+*/
+
+Users.first({
+  'role': 3
+}, function (user) {
+  console.info("User name:", user.name);
+});
+
 
 var fs = require('fs');
 var port = 3000;
