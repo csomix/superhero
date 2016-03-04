@@ -6,7 +6,7 @@ mongoose.connect('mongodb://localhost/superhero');
 
 var Users = require('./models/users');
 Users.setConnection(mongoose);
-/*
+/*c
 Users.create({
   name: 'John Doe',
   email: 'john.doe@gmail.com',
@@ -74,6 +74,31 @@ Users.getModel().isAdmin(2, function (err, data) {
   console.log(err);
   console.log(data);
 });
+
+// Rendelés mentése az adott felhasználóhoz.
+
+Users.first({
+  name: new RegExp('son', 'gi')
+}, function (user) {
+  if (user !== null) {
+    var order = new Users.getModel('Orders');
+    order._creator = user._id;
+    order.insDate = new Date();
+    order.description = 'Ez egy rendelés felvétele';
+    order.product = 'Alma Vasaló';
+    order.amount = 12990;
+    order.deadLine = new Date('2016-03-05');
+    order.save(function (err) {
+      console.log(err);
+    });
+    console.info("User: ", user);
+  } else {
+    console.info("User name: no-user");
+  }
+});
+
+
+
 
 var fs = require('fs');
 var port = 3000;

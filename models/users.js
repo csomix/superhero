@@ -2,7 +2,7 @@ var mongoose = require("mongoose");
 
 // Függvény a collekció adatok kezelésére
 
-var db, Users;
+var db, Users, Orders, models = {};
 
 function setConnection(mongodb) {
   db = mongodb;
@@ -20,7 +20,11 @@ function setModel() {
     meta: {
       birthsday: Date,
       hobby: String
-    }
+    },
+    orders: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Orders'
+    }]
   });
 
   userSchema.statics.isAdmin = function (r, cb) {
@@ -29,8 +33,32 @@ function setModel() {
         $lte: 2
       }
     }, cb);
-  }
+  };
+
   Users = db.model('Users', userSchema, 'Users');
+
+  var orderSchema = new Schema({
+    _creator: {
+      type: Schema.Types.ObjectId,
+      ref: 'Users'
+    },
+    insDate: Date,
+    description: String,
+    product: String,
+    amount: Number,
+    deadLine: Date
+  });
+  Orders = db.model('Orders', orderSchema, 'Orders');
+  models['Users'] = Users;
+  models['Orders'] = Orders;
+};
+
+function getModel(modelName) {
+  if (!modelName) {
+    return Users;
+  } else {
+    return models[modelName];
+  }
 }
 
 function read(where, callBack) {
@@ -56,10 +84,6 @@ function first(where, callBack) {
       callBack(null);
     }
   })
-}
-
-function getModel() {
-  return Users;
 }
 
 function create(document, callBack) {
