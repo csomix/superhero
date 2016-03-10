@@ -1,4 +1,8 @@
 {
-    "name": "superhero",
-    "dependencies": {}
+  "name": "superhero",
+  "dependencies": {
+    "bootstrap": "~3.3.6",
+    "angular": "~1.5.1-build.4659+sha.db281c1",
+    "jquery": "2.2.1"
+  }
 }
