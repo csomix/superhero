@@ -76,7 +76,7 @@ Users.getModel().isAdmin(2, function (err, data) {
 });
 
 // Rendelés mentése az adott felhasználóhoz.
-
+/*
 Users.first({
   name: new RegExp('son', 'gi')
 }, function (user) {
@@ -96,7 +96,7 @@ Users.first({
     console.info("User name: no-user");
   }
 });
-
+*/
 
 
 

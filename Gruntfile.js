@@ -8,7 +8,12 @@ module.exports = function (grunt) {
         banner: '/*! Copy P.Csoma <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
       },
       build: {
-        src: 'src/js/*.js',
+        src: [
+          'src/vendor/jquery/dist/jquery.min.js',
+          'src/vendor/bootstrap/dist/js/bootstrap.min.js',
+          'src/vendor/angular/angular.min.js',
+          'src/js/*.js'
+          ],
         dest: 'build/js/all.js'
       }
     },
