@@ -15,6 +15,12 @@ block content
         | . This plugin is a fork from
         a(href='https://github.com/le717/brackets-html-skeleton#readme') HTML Skeleton
         | .
+      .row
+        .col-xs-3
+          input.form-control(ng-model='yourName', type='text',
+          ng-change
+          )
+          p Hello {{ yourName }}!
       ul
         each user in users
           li #{user.id}: #{user.name} - #{user.email}
